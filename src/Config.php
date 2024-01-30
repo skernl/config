@@ -16,9 +16,11 @@ class Config implements ConfigInterface
 
     public function get(string $key, mixed $default = null): mixed
     {
+        return self::$config [$key];
     }
 
     public function has(string $key): bool
     {
+        return array_key_exists($key, self::$config);
     }
 }
