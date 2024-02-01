@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace Skernl\Config;
 
+use Skernl\Container\Annotation\Mount;
 use Skernl\Contract\ConfigInterface;
-use Skernl\Di\Annotation\Mount;
 
 /**
  * @ConfigProvider
@@ -16,7 +16,9 @@ class ConfigProvider
     public function __invoke(): array
     {
         return [
-            ConfigInterface::class => Config::class,
+            'dependencies' => [
+                ConfigInterface::class => Config::class,
+            ],
         ];
     }
 }
